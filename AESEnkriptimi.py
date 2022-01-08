@@ -10,15 +10,15 @@ screen.title("Enkriptimi AES")
 mesazhi = StringVar()
 enc = StringVar()
 
-Label(text = "Enkriptimi me AES", bg="pink", width="400", height="2", font = ("Calibri", 13)).pack()
-Label(text = "").pack()
-Label(text = "Zgjedhni njërin nga opsionet më poshtë për enkriptim: ").pack()
-Radiobutton(screen, text="128 bit", variable = enc,  value=16).pack()
-Radiobutton(screen, text="192 bit", variable = enc, value=24).pack()
-Radiobutton(screen, text="256 bit", variable = enc, value=32).pack()
-Label(text = "Mesazhi juaj: ").pack()
-Entry(textvariable = mesazhi).pack()
-
+Label(text="Enkriptimi me AES", bg="pink", width="400",
+      height="2", font=("Calibri", 13)).pack()
+Label(text="").pack()
+Label(text="Zgjedhni njërin nga opsionet më poshtë për enkriptim: ").pack()
+Radiobutton(screen, text="128 bit", variable=enc,  value=16).pack()
+Radiobutton(screen, text="192 bit", variable=enc, value=24).pack()
+Radiobutton(screen, text="256 bit", variable=enc, value=32).pack()
+Label(text="Mesazhi juaj: ").pack()
+Entry(textvariable=mesazhi).pack()
 
 
 plain = StringVar()
@@ -26,13 +26,14 @@ plain.set("")
 cipher = StringVar()
 cipher.set("")
 
+
 def selected():
     return enc.get()
+
 
 def put():
 
     key = token_bytes(int(selected()))
-
 
     def encrypt(msg):
         cipher = AES.new(key, AES.MODE_EAX)
@@ -58,7 +59,9 @@ def put():
     else:
         plain.set(f'Mesazhi: {plaintext}')
 
-Button(text = "Enkripto", height="1", justify="center" , width = "10", command = put).pack()
+
+Button(text="Enkripto", height="1", justify="center",
+       width="10", command=put).pack()
 Label(screen, textvariable=plain).pack()
 Label(screen, textvariable=cipher).pack()
 screen.mainloop()
