@@ -12,11 +12,11 @@ enc = StringVar()
 
 Label(text = "Enkriptimi me AES", bg="pink", width="400", height="2", font = ("Calibri", 13)).pack()
 Label(text = "").pack()
-Label(text = "Zgjedhni njërin opsion për enkriptim: ").pack()
+Label(text = "Zgjedhni njërin nga opsionet më poshtë për enkriptim: ").pack()
 Radiobutton(screen, text="128 bit", variable = enc,  value=16).pack()
 Radiobutton(screen, text="192 bit", variable = enc, value=24).pack()
 Radiobutton(screen, text="256 bit", variable = enc, value=32).pack()
-Label(text = "Mesazhi: ").pack()
+Label(text = "Mesazhi juaj: ").pack()
 Entry(textvariable = mesazhi).pack()
 
 
@@ -54,9 +54,9 @@ def put():
 
     cipher.set(f'Mesazhi i enkriptuar: {ciphertext}')
     if not plaintext:
-        plain.set("Mesazhi eshte bosh!")
+        plain.set("Mesazhi është bosh! Ju lutem shënoni mesazhin tuaj.")
     else:
-        plain.set(f'Mesazhi i dekriptuar: {plaintext}')
+        plain.set(f'Mesazhi: {plaintext}')
 
 Button(text = "Enkripto", height="1", justify="center" , width = "10", command = put).pack()
 Label(screen, textvariable=plain).pack()
